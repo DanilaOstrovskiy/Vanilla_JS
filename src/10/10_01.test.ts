@@ -1,10 +1,11 @@
 import {
+    addCompany,
     makeHairstyle,
-    moveUserToOtherHouse, removeBook, updateBook,
-    upgradeUserLaptop,
+    removeBook,
+    updateCompanyTitle, updateCompanyTitle2,
     UserType,
-    UserWithBooksType,
-    UserWithLapTopType
+    UserWithLapTopType,
+    WithCompaniesType
 } from './10_01'
 
 
@@ -25,28 +26,21 @@ test('reference type test', () => {
     expect(awesomeUser.address).toBe(user.address)
 })
 
-test('updateBook', () => {
-    let user: UserWithLapTopType = {
-        name: 'Dimych',
-        hair: 32,
-        address: {
-            city: 'Minsk',
-            house: 12
-        },
-        laptop: {
-            title: 'Zenbook'
-        },
+test('update company', () => {
 
-
+    let companies = {
+        'Dimych': [{id: 1, title: 'Epam'}, {id: 2, title: 'IT-INCUBATOR'}],
+        'Artem': [{id: 2, title: 'IT-INCUBATOR'}]
     }
 
-    const userCopy = removeBook(user, 'js')
 
-    expect(user).not.toBe(userCopy)
-    expect(user.laptop).toBe(userCopy.laptop)
-    expect(user.address).toBe(userCopy.address)
-    expect(user.books).not.toBe(userCopy.books)
-    expect(userCopy.books[2]).toBe('react')
+    const copy = updateCompanyTitle2(companies, "Dimych", 1, "EPAM")
+
+
+    expect(copy['Dimych']).not.toBe(companies['Dimych'])
+    expect(copy['Artem']).toBe(companies['Artem'])
+    expect(copy['Dimych'][0].title).toBe('EPAM')
+
 
 
 })
