@@ -1,12 +1,4 @@
-import {
-    addCompany,
-    makeHairstyle,
-    removeBook,
-    updateCompanyTitle, updateCompanyTitle2,
-    UserType,
-    UserWithLapTopType,
-    WithCompaniesType
-} from './10_01'
+import {makeHairstyle, updateCompanyTitle2, UserType} from './10_01'
 
 
 test('reference type test', () => {
@@ -35,7 +27,6 @@ test('update company', () => {
 
 
     const copy = updateCompanyTitle2(companies, "Dimych", 1, "EPAM")
-
 
     expect(copy['Dimych']).not.toBe(companies['Dimych'])
     expect(copy['Artem']).toBe(companies['Artem'])
